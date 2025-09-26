@@ -40,6 +40,27 @@ public class Utils {
         swap(arr, i + 1, high);
         return i + 1;
     }
+    //Same partition, but with pivot element
+    public static int partitionWithPivot(int[] arr, int left, int right, int pivot) {
+        int pivotIndex = left;
+        for (int i = left; i <= right; i++) {
+            if (arr[i] == pivot) {
+                pivotIndex = i;
+                break;
+            }
+        }
+        swap(arr, pivotIndex, right);
+
+        int storeIndex = left;
+        for (int i = left; i < right; i++) {
+            if (arr[i] < pivot) {
+                swap(arr, i, storeIndex);
+                storeIndex++;
+            }
+        }
+        swap(arr, storeIndex, right);
+        return storeIndex;
+    }
 
     //Checks if an array is not null
     public static void guardNotNull(int[] arr) {
