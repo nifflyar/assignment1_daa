@@ -41,7 +41,7 @@ public class BenchPlotter {
     public static List<BenchEntry> readCSV(String path) throws Exception {
         List<BenchEntry> data = new ArrayList<>();
         try (BufferedReader br = new BufferedReader(new FileReader(path))) {
-            String line = br.readLine(); // skip header
+            String line = br.readLine();
             while ((line = br.readLine()) != null) {
                 if (line.trim().isEmpty()) continue;
                 String[] tokens = line.split(",");

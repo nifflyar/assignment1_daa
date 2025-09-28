@@ -33,6 +33,7 @@ import assignment1.metrics.Metrics;
  * - Default warmup/measurement are small to let you iterate quickly. For final runs
  *   override with CLI args: e.g. -wi 5 -i 5 -f 2
  * - To run a subset: add -p distribution=RANDOM -p n=100000 etc.
+ * - exp.: java -jar target/assignment1-1.0-SNAPSHOT.jar SelectVsSortBenchmark -p distribution=RANDOM -p n=100000 -wi 5 -i 5 -f 2
  */
 
 @BenchmarkMode(Mode.AverageTime)
