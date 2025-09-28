@@ -1,7 +1,10 @@
 package assignment1;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import org.junit.jupiter.api.Test;
+
+import assignment1.metrics.Metrics;
 
 public class ClosestPairTest {
 
@@ -12,8 +15,10 @@ public class ClosestPairTest {
                 new ClosestPair.Point(3, 4),
                 new ClosestPair.Point(1, 1)
         };
-        double result = ClosestPair.closestPair(pts);
+        Metrics metrics = new Metrics();
+        double result = ClosestPair.closestPair(pts, metrics);
         assertEquals(Math.sqrt(2), result, 1e-6);
+
     }
 
     @Test
@@ -22,7 +27,10 @@ public class ClosestPairTest {
                 new ClosestPair.Point(0, 0),
                 new ClosestPair.Point(5, 0)
         };
-        assertEquals(5.0, ClosestPair.closestPair(pts), 1e-6);
+        Metrics metrics = new Metrics();
+        double result = ClosestPair.closestPair(pts, metrics);
+        assertEquals(5.0, result, 1e-6);
+
     }
 
     @Test
@@ -33,7 +41,10 @@ public class ClosestPairTest {
                 new ClosestPair.Point(2, 0),
                 new ClosestPair.Point(3, 0)
         };
-        assertEquals(1.0, ClosestPair.closestPair(pts), 1e-6);
+        Metrics metrics = new Metrics();
+        double result = ClosestPair.closestPair(pts, metrics);
+        assertEquals(1.0, result, 1e-6);
+
     }
 
     @Test
@@ -46,7 +57,16 @@ public class ClosestPairTest {
                 new ClosestPair.Point(12, 10),
                 new ClosestPair.Point(3, 4)
         };
-        double result = ClosestPair.closestPair(pts);
+        Metrics metrics = new Metrics();
+        double result = ClosestPair.closestPair(pts, metrics);
         assertEquals(Math.sqrt(2), result, 1e-6);
+
+    }
+
+    @Test
+    public void testInvalidInput() {
+        Metrics metrics = new Metrics();
+        assertThrows(IllegalArgumentException.class,
+                () -> ClosestPair.closestPair(new ClosestPair.Point[]{}, metrics));
     }
 }

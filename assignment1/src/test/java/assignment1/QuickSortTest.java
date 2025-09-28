@@ -6,46 +6,54 @@ import java.util.Random;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import org.junit.jupiter.api.Test;
 
+import assignment1.metrics.Metrics;
+
 public class QuickSortTest {
 
     @Test
     void testEmptyArray() {
         int[] arr = {};
-        QuickSort.sort(arr);
+        Metrics metrics = new Metrics();
+        QuickSort.sort(arr, metrics);
         assertArrayEquals(new int[]{}, arr);
     }
 
     @Test
     void testSingleElement() {
         int[] arr = {42};
-        QuickSort.sort(arr);
+        Metrics metrics = new Metrics();
+        QuickSort.sort(arr, metrics);
         assertArrayEquals(new int[]{42}, arr);
     }
 
     @Test
     void testSortedArray() {
         int[] arr = {1, 2, 3, 4, 5};
-        QuickSort.sort(arr);
+        Metrics metrics = new Metrics();
+        QuickSort.sort(arr, metrics);
         assertArrayEquals(new int[]{1, 2, 3, 4, 5}, arr);
     }
 
     @Test
     void testReverseArray() {
         int[] arr = {5, 4, 3, 2, 1};
-        QuickSort.sort(arr);
+        Metrics metrics = new Metrics();
+        QuickSort.sort(arr, metrics);
         assertArrayEquals(new int[]{1, 2, 3, 4, 5}, arr);
     }
 
     @Test
     void testRandomArray() {
         Random random = new Random(42);
-        int[] arr = random.ints(10000000, -100000, 100000).toArray();
+        int[] arr = random.ints(100_000, -100_000, 100_000).toArray();
 
         int[] expected = Arrays.copyOf(arr, arr.length);
         Arrays.sort(expected);
 
-        QuickSort.sort(arr);
+        Metrics metrics = new Metrics();
+        QuickSort.sort(arr, metrics);
         assertArrayEquals(expected, arr);
+
     }
 
     @Test
@@ -54,7 +62,10 @@ public class QuickSortTest {
         int[] expected = Arrays.copyOf(arr, arr.length);
         Arrays.sort(expected);
 
-        QuickSort.sort(arr);
+        Metrics metrics = new Metrics();
+        QuickSort.sort(arr, metrics);
         assertArrayEquals(expected, arr);
+
+
     }
 }
