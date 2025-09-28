@@ -1,7 +1,0 @@
-alg,size,time_ns,comp,alloc,maxdepth
-MergeSort,100,0.032917,661,100,4
-QuickSort,100,0.006250,621,0,4
-MergeSort,1000,0.195167,10208,1000,7
-QuickSort,1000,0.041459,10393,0,8
-MergeSort,10000,2.104750,126843,10000,11
-QuickSort,10000,0.519875,154607,0,10
