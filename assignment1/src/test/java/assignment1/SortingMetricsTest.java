@@ -33,14 +33,14 @@ public class SortingMetricsTest {
             MergeSort.sort(mergeArr, mergeMetrics);
             long end = System.nanoTime();
 
-            double time_ns = (end - start) / 1000000.0;
+            double time_ms = (end - start) / 1000000.0;
 
             int[] expected = Arrays.copyOf(arr, arr.length);
             Arrays.sort(expected);
             assertArrayEquals(expected, mergeArr);
 
 
-            writer.writeMetrics("MergeSort", size, mergeMetrics, time_ns);
+            writer.writeMetrics("MergeSort", size, mergeMetrics, time_ms);
 
             // QuickSort
             int[] quickArr = Arrays.copyOf(arr, arr.length);
@@ -50,12 +50,12 @@ public class SortingMetricsTest {
             QuickSort.sort(quickArr, quickMetrics);
             end = System.nanoTime();
 
-            time_ns = (end - start) / 1000000.0;
+            time_ms = (end - start) / 1000000.0;
 
             assertArrayEquals(expected, quickArr);
 
 
-            writer.writeMetrics("QuickSort", size, quickMetrics, time_ns);
+            writer.writeMetrics("QuickSort", size, quickMetrics, time_ms);
         }
     }
 }

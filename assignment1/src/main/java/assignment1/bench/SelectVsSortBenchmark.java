@@ -44,7 +44,7 @@ import assignment1.metrics.Metrics;
 @State(Scope.Benchmark)
 public class SelectVsSortBenchmark {
 
-    @Param({ "1000", "10000", "100000" })
+    @Param({ "10", "100", "1000" })
     public int n;
 
     @Param({ "RANDOM", "SORTED", "REVERSE", "DUPLICATES", "ADVERSARIAL" })
@@ -68,7 +68,7 @@ public class SelectVsSortBenchmark {
         rnd = new Random(42);
         base = generateArray(n, distribution, rnd);
         AGG.clear();
-        csv = new CSVWriter("target/bench-metrics.csv");
+        csv = new CSVWriter("/Users/nifflyar/vscode/DAA/daa_assignment1/assignment1/src/main/java/assignment1/bench/bench-results.csv");
     }
 
     @Setup(Level.Invocation)
